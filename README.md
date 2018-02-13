@@ -1,7 +1,13 @@
 # proxy_pool
-IP proxy pool used by spiders<br>
-本IP代理池框架共分为以下几个部分：
---------------------------------
+
+IP proxy pool used by spiders<p>
+
+## 结构示意图
+![结构示意图](proxy_pool/img/architecture.png)
+
+
+## 本IP代理池框架共分为以下几个部分：<br>
+
 1. 抓取器(crawler.py、fetcher.py)<br>
 主要负责抓取指定IP代理网站的代理资源。大家可以自行增加待抓取IP代理网站的抓取方法，自定义的抓取方法必须以"crawl_"开头。
 抓取方法增加后，下次启动IP代理池时，将自动抓取这些代理网站的数据。fetcher.py主要负责调用crawler抓取器进行抓取，抓取之前
@@ -23,8 +29,8 @@ IP proxy pool used by spiders<br>
 相关常量配置<br>
 
 
-======安装方式======<br>
-------------------------
+## ======安装方式======<br>
+
 Python3.6<br>
 Redis单独安装后，启动Redis服务<br>
 其他第三方库可以使用pip安装： pip install -r requirements.txt<br>
