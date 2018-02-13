@@ -3,7 +3,7 @@
 IP proxy pool used by spiders<p>
 
 ## 结构示意图
-![结构示意图](https://github.com/qingchunjun/proxy_pool/img/architecture.png)
+![结构示意图](https://github.com/qingchunjun/proxy_pool/blob/master/img/architecture.png)
 
 
 ## 本IP代理池框架共分为以下几个部分：<br>
