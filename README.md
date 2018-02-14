@@ -37,8 +37,15 @@ Redis单独安装后，启动Redis服务<br>
 
 安装完毕后，直接运行run.py文件即可<br>
 
-爬虫调用IP代理资源，以HTTP方式进行访问：<br>
-import requests<br>
+### 爬虫调用IP代理资源，以HTTP方式进行访问。<br>
 
+随机获取单个代理，eg：<br>
+import requests<br>
 r = requests.get("http://localhost:2018/get")<br>
 print(r.text)
+
+按代理分数批量获取代理，eg.：<br>
+import requests<br>
+r = requests.get("http://localhost:2018/score/100")<br>
+proxies = r.text.split("<br>")[1:]
+print(proxies)
