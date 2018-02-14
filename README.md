@@ -47,5 +47,5 @@ print(r.text)
 按代理分数批量获取代理，eg.：<br>
 import requests<br>
 r = requests.get("http://localhost:2018/score/100")<br>
-proxies = r.text.split("\<br\>")[1:]
+proxies = r.text.split("\<br\>")[1:]<br>
 print(proxies)
