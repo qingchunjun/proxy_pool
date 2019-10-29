@@ -1,7 +1,7 @@
 from utils import get_page
 from lxml import etree
 import time
-
+import requests,re
 
 class Crawler:
 
@@ -38,17 +38,21 @@ class Crawler:
                 port = proxy_trs[i].xpath("./td[2]")[0].text
                 yield ":".join([ip, port])
 
-    def crawl_ip181(self):
+    def crawl_ipxici(self):
         """
-        代理名称：ip181
+        代理名称：xicidaili
+        :param
         :return: proxy
         """
-        url = 'http://www.ip181.com/'
-        html = etree.HTML(get_page(url))
-        proxy_trs = html.xpath("//table//tr[not (@class='active')]")
-        for tr in proxy_trs:
-            ip = tr.xpath("./td[1]")[0].text
-            port = tr.xpath("./td[2]")[0].text
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+        }
+
+        resp = requests.get("https://www.xicidaili.com/nn/", headers=headers)
+        ips = re.findall(
+            '<td class="country"><img src="//fs.xicidaili.com/images/flag/cn.png" alt="Cn" /></td>\s+<td>(.*?)</td>\s+<td>(.*?)</td>',
+            resp.text, re.S)
+        for ip, port in ips:
             yield ":".join([ip, port])
 
     def crawl_kuaidaili(self, page_count=5):
